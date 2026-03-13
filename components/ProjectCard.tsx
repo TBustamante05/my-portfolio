@@ -1,4 +1,5 @@
 import { ChevronRight, Globe, Smartphone } from "lucide-react";
+import Link from "next/link";
 
 interface ProjectCardProps {
   number: string;
@@ -12,6 +13,7 @@ interface ProjectCardProps {
   isHovered: boolean;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
+  link: string;
 }
 
 function ProjectCard({
@@ -26,6 +28,7 @@ function ProjectCard({
   isHovered,
   onMouseEnter,
   onMouseLeave,
+  link
 }: ProjectCardProps) {
   return (
     <div className="relative mb-16 md:mb-32" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
@@ -84,7 +87,7 @@ function ProjectCard({
         </div>
 
         <div className="flex items-center gap-2 text-[#EB5E28] font-semibold cursor-pointer group mb-4">
-          <span>View Project</span>
+          <Link href={`/project/${link}`}>View Project</Link>
           <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
         </div>
 
@@ -133,7 +136,7 @@ function ProjectCard({
         </div>
 
         <div className="flex items-center gap-2 text-[#EB5E28] font-semibold cursor-pointer group mb-4">
-          <span>View Project</span>
+          <Link href={`/project/${link}`}>View Project</Link>
           <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
         </div>
 
@@ -159,7 +162,7 @@ function ProjectCard({
             </div>
             <h2 className="text-5xl font-bold mb-4 text-[#FFFDF1]">{title}</h2>
             <div className="flex items-center gap-2 font-semibold cursor-pointer group justify-end text-[#EB5E28]">
-              <span>View Project</span>
+              <Link href={`/project/${link}`}>View Project</Link>
               <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
             </div>
             <div className="mt-8 text-sm text-[#ABA49C]">Q4 {year}</div>
@@ -230,7 +233,7 @@ function ProjectCard({
             </div>
             <h2 className="text-5xl font-bold mb-4 leading-tight text-[#FFFDF1]">{title}</h2>
             <div className="flex items-center gap-2 text-[#EB5E28] font-semibold cursor-pointer group">
-              <span>View Project</span>
+              <Link href={`/project/${link}`}>View Project</Link>
               <ChevronRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
             </div>
             <div className="mt-8 text-sm text-[#ABA49C]">Q4 {year}</div>

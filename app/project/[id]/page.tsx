@@ -9,54 +9,23 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Contact from "@/components/Contact";
 import { ArrowUpRight, Github } from "lucide-react";
-
-// Datos de ejemplo - reemplaza con tus datos reales o fetch desde una API
-const projectsData = {
-  "ecommerce-platform": {
-    title: "E-commerce Platform",
-    description: "Una plataforma de comercio electrónico completa con carrito de compras, gestión de inventario y procesamiento de pagos. Diseñada para ofrecer una experiencia de usuario fluida y moderna.",
-    longDescription: `Este proyecto nació de la necesidad de crear una solución escalable para pequeñas y medianas empresas que buscan digitalizar sus ventas. La plataforma incluye un panel de administración completo, integración con múltiples pasarelas de pago, y un sistema de notificaciones en tiempo real.
-    
-    La arquitectura del proyecto está diseñada para soportar alto tráfico y permite una fácil integración con sistemas de terceros a través de APIs RESTful.`,
-    technologies: [
-      { name: "React", icon: "⚛️" },
-      { name: "Next.js", icon: "▲" },
-      { name: "TypeScript", icon: "📘" },
-      { name: "Tailwind CSS", icon: "🎨" },
-      { name: "PostgreSQL", icon: "🐘" },
-      { name: "Stripe", icon: "💳" },
-    ],
-    challenges: [
-      {
-        title: "Optimización de rendimiento",
-        description: "Implementar carga lazy de imágenes y paginación infinita para manejar catálogos con miles de productos sin afectar el rendimiento."
-      },
-      {
-        title: "Seguridad en pagos",
-        description: "Integrar Stripe de manera segura cumpliendo con PCI DSS, implementando tokenización y validación en el servidor."
-      },
-      {
-        title: "Gestión de estado compleja",
-        description: "Coordinar el estado del carrito, inventario en tiempo real y sesiones de usuario a través de múltiples componentes."
-      }
-    ],
-    images: [
-      "/mock1.jpg",
-      "/mock2.jpg",
-    ],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/username/project"
-  }
-  // Agrega más proyectos aquí
-};
+import { projectsData } from "@/data/projectsData";
 
 function ProjectDetailPage() {
   const [showContent, setShowContent] = useState(false);
+  const [zoomImage, setZoomImage] = useState<string | null>(null);
   const params = useParams();
   const projectId = params?.id as string;
   
   // Obtener datos del proyecto
   const project = projectsData[projectId as keyof typeof projectsData];
+
+  // Manejar clic en imagen para zoom
+  const handleImageClick = (index: number) => {
+    if (project && project.images && project.images[index]) {
+      setZoomImage(project.images[index]);
+    }
+  };
 
   // Si no existe el proyecto, mostrar mensaje
   if (!project) {
@@ -148,18 +117,17 @@ function ProjectDetailPage() {
                 </div>
                  {/* Technologies section */}
                 <section className="mb-12">
-                  <h2 className="text-3xl font-bold mb-6 c-inverse">Tecnologías utilizadas</h2>
+                  <h2 className="text-3xl font-bold mb-6 c-inverse">Used technologies</h2>
                   <div className="flex flex-wrap gap-4">
                     {project.technologies.map((tech, index) => (
                       <motion.div
-                        key={tech.name}
+                        key={tech}
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        className="px-6 py-1 bg-neutral-900 border border-[#BFBAB0]/20 text-xs hover:border-[#EB5E28] hover:text-[#EB5E28] transition-colors cursor-default duration-300 ease-in-out rounded-full flex items-center justify-center text-center gap-2"
+                        className="px-6 py-1 bg-neutral-900 border  text-xs border-[#EB5E28]/70 text-[#EB5E28]/90 hover:bg-[#EB5E28] hover:text-white transition-colors cursor-default duration-300 ease-in-out rounded-full flex items-center justify-center text-center gap-2"
                       >
-                        <div className="text-xl mb-2">{tech.icon}</div>
-                        <div className="font-medium text-lg">{tech.name}</div>
+                        <div className="font-medium text-lg">{tech}</div>
                       </motion.div>
                     ))}
                   </div>
@@ -168,7 +136,7 @@ function ProjectDetailPage() {
                 {/* Images gallery (opcional) */}
                 {project.images && project.images.length > 0 && (
                   <section className="mb-12">
-                    <h2 className="text-3xl font-bold mb-6 c-inverse">Galería</h2>
+                    <h2 className="text-3xl font-bold mb-6 c-inverse">Gallery</h2>
                     <div className="grid md:grid-cols-2 gap-3">
                       {project.images.map((image, index) => (
                         <motion.div
@@ -177,6 +145,7 @@ function ProjectDetailPage() {
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: index * 0.1 }}
                           className="rounded-lg overflow-hidden border border-[#bfbab0]/20 hover:border-white transition-colors duration-300 cursor-pointer"
+                          onClick={() => handleImageClick(index)}
                         >
                           <img 
                             src={image} 
@@ -191,7 +160,7 @@ function ProjectDetailPage() {
 
                 {/* Description section */}
                 <section className="mb-12">
-                  <h2 className="text-3xl font-bold mb-4 c-inverse">Descripción del proyecto</h2>
+                  <h2 className="text-3xl font-bold mb-4 c-inverse">Project Description</h2>
                   <div className="whitespace-pre-line leading-relaxed text-xl">
                     {project.longDescription}
                   </div>
@@ -200,7 +169,7 @@ function ProjectDetailPage() {
 
                 {/* Challenges section */}
                 <section className="mb-12">
-                  <h2 className="text-3xl font-bold mb-6 c-inverse">Retos y soluciones</h2>
+                  <h2 className="text-3xl font-bold mb-6 c-inverse">Challenges and Solutions</h2>
                   <div className="space-y-6">
                     {project.challenges.map((challenge, index) => (
                       <motion.div
@@ -208,7 +177,7 @@ function ProjectDetailPage() {
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.15 }}
-                        className="bg-[#1A1A1A] border border-[#BFBAB0]/20 rounded-lg p-6"
+                        className="bg-[#1A1A1A] border border-[#BFBAB0]/20 hover:border-[#BFBAB0] transition-colors duration-300 rounded-lg p-6"
                       >
                         <h3 className="text-xl font-semibold mb-3 text-[#EB5E28]">
                           {challenge.title}
@@ -228,6 +197,29 @@ function ProjectDetailPage() {
                   <Profile />
                 </div>
                 <Footer />
+              </motion.div>
+            )}
+          </AnimatePresence>
+          {/* Zoomed image modal */}
+          <AnimatePresence>
+            {zoomImage && (
+              <motion.div
+                className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 cursor-pointer"
+                onClick={() => setZoomImage(null)}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <motion.img 
+                  src={zoomImage} 
+                  alt="Zoomed project screenshot" 
+                  className="max-w-[90%] max-h-[90%] rounded-lg shadow-lg"
+                  initial={{ scale: 0.8 }}
+                  animate={{ scale: 1 }}
+                  exit={{ scale: 0.8 }}
+                  transition={{ duration: 0.3 }}
+                />
               </motion.div>
             )}
           </AnimatePresence>
