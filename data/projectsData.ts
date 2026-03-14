@@ -43,7 +43,7 @@ export const projectsData = {
       "/projects/andres4.png",
     ],
     liveUrl: "https://andres-gomez-portfolio.netlify.app/",
-    githubUrl: "https://github.com/username/project",
+    githubUrl: "https://github.com/TBustamante05/andres-gomez-portfolio",
   },
   "neko-landing": {
     title: "Neko Swag Landing",
@@ -88,7 +88,7 @@ export const projectsData = {
       "/projects/neko3.png",
     ],
     liveUrl: "https://neko-landing.netlify.app/",
-    githubUrl: "https://github.com/username/project",
+    githubUrl: "https://github.com/TBustamante05/neko-landing",
   },
   "magic-cream": {
     title: "Ice Cream Product Landing",
@@ -129,6 +129,6 @@ export const projectsData = {
 
     images: ["/projects/magic1.png", "/projects/magic2.png", "/projects/magic3.png", "/projects/magic4.png"],
     liveUrl: "https://magic-cream.netlify.app/",
-    githubUrl: "https://github.com/username/project",
+    githubUrl: "https://github.com/TBustamante05/magic-cream-landing",
   },
 };

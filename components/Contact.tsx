@@ -20,10 +20,10 @@ function Contact() {
   return (
     <div className="mt-16 md:mt-30 justify-center flex flex-col items-center gap-8 sm:px-4">
       <div className="text-center">
-        <h1 className="text-5xl md:text-8xl font-bold leading-none tracking-tight uppercase text-end c-inverse">
+        <h1 className="text-5xl md:text-7xl font-bold leading-none tracking-tight uppercase text-end c-inverse">
           Let&apos;s Talk
         </h1>
-        <h2 className="text-4xl md:text-7xl font-bold c-accent leading-none tracking-tight uppercase mb-4 ">
+        <h2 className="text-4xl md:text-6xl font-bold c-accent leading-none tracking-tight uppercase mb-4 ">
           Contact!
         </h2>
       </div>
