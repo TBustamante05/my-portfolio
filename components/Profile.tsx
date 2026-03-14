@@ -16,8 +16,8 @@ function Profile({ className }: Props) {
       className={`${className} w-full sm:w-[350px] bg-neutral-900 text-[#FFFDF1] text-center px-8 py-10 flex flex-col items-center gap-2 rounded-2xl lg:sticky lg:top-30 self-start`}
     >
       <div
-        className="w-[250px] h-[250px] rounded-full bg-cover bg-[30%_50%] bg-no-repeat border-2 border-[#EB5E28]"
-        style={{ backgroundImage: "url('/profile2.jpg')", backgroundSize: "130%" }}
+        className="w-[250px] h-[250px] rounded-full bg-cover bg-[30%_50%] bg-no-repeat"
+        style={{ backgroundImage: "url('/profile2.jpeg')", backgroundSize: "105%" }}
       />
       <h1 className="font-bold text-[25px] mt-5">Thiago Bustamante</h1>
       <span className="text-[#BFBAB0] mb-2">Cali, Colombia</span>
