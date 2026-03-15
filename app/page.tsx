@@ -15,16 +15,16 @@ export default function Home() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 1500, borderRadius: "150rem 150rem 0 0" }}
-      animate={{ opacity: 1, y: 0, borderRadius: "0px" }}
-      transition={{ duration: 1, ease: "easeOut" }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       onAnimationComplete={() => setShowContent(true)}
       className={`c-inverse ${styles.blackTexture} px-4 sm:px-8 md:px-12 lg:px-24 py-8 min-h-screen`}
     >
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: showContent ? 1 : 0 }}
-        transition={{ duration: 0.5 }}
+        initial={{ opacity: 0, y: -12 }}
+        animate={{ opacity: showContent ? 1 : 0, y: showContent ? 0 : -12 }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
       >
         <Navbar />
       </motion.div>
@@ -45,9 +45,9 @@ export default function Home() {
           <AnimatePresence>
             {showContent && (
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
               >
                 <section id="projects">
                   <Projects />
