@@ -88,13 +88,13 @@ function ProjectCard({
             </div>
             <div className="flex items-end justify-center absolute p-4 left-0 right-0 bottom-0 text-center">
               {image ? (
-                <a href={`/project/${link}`} target="_blank">
+                <Link href={`/project/${link}`}>
                   <img
                     src={image}
                     alt={title}
                     className="w-full h-full z-20 object-cover hover:scale-105 transition-transform duration-500 p-2 border border-dashed border-black rounded-lg"
                   />
-                </a>
+                </Link>
               ) : (
                 <>
                   {category === "MOBILE APP" ? (
@@ -150,13 +150,13 @@ function ProjectCard({
             </div>
             <div className="flex items-end justify-center absolute p-4 left-0 right-0 bottom-0 text-center">
               {image ? (
-                <a href={`/project/${link}`} target="_blank">
+                <Link href={`/project/${link}`}>
                   <img
                     src={image}
                     alt={title}
                     className="w-full h-full z-20 object-cover hover:scale-105 transition-transform duration-500 p-2 border border-dashed border-black rounded-lg"
                   />
-                </a>
+                </Link>
               ) : (
                 <>
                   {category === "MOBILE APP" ? (
@@ -229,13 +229,13 @@ function ProjectCard({
                 </div>
                 <div className="flex items-end justify-center absolute p-4 left-0 right-0 bottom-0 text-center cursor-pointer">
                   {image ? (
-                    <a href={`/project/${link}`} target="_blank">
+                    <Link href={`/project/${link}`}>
                       <img
                         src={image}
                         alt={title}
                         className="w-full h-full z-20 object-cover hover:-rotate-6 hover:scale-105 transition-transform duration-500 p-2 border border-dashed border-black rounded-lg"
                       />
-                    </a>
+                    </Link>
                   ) : (
                     <>
                       {category === "MOBILE APP" ? (
@@ -264,13 +264,13 @@ function ProjectCard({
                 </div>
                 <div className="flex items-end justify-center absolute p-4 left-0 right-0 bottom-0 text-center cursor-pointer">
                   {image ? (
-                    <a href={`/project/${link}`} target="_blank">
+                    <Link href={`/project/${link}`}>
                       <img
                         src={image}
                         alt={title}
                         className="w-full h-full z-20 object-cover hover:rotate-6 hover:scale-105 transition-transform duration-500 p-2 border border-dashed border-[#EB5E28] rounded-2xl"
                       />
-                    </a>
+                    </Link>
                   ) : (
                     <>
                       {category === "MOBILE APP" ? (
